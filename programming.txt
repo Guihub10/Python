@@ -1,0 +1,1 @@
+I love programming! It is 'w' mode, everytime you called it, old centexts will be lostIt is 'a' mode, old contexts won't be deleted!
