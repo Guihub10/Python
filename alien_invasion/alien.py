@@ -19,7 +19,7 @@ class Alien(Sprite):
 		self.x = float(self.rect.x)
 		
 		self.start_time = 0
-		self.substance_time = ai_settings.self.get_value('reward_substance_time', 5)
+		self.substance_time = ai_settings.get_value('reward_substance_time', 5)
 		self.stop_factor = 1
 	
 	def blitme(self):

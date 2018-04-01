@@ -34,7 +34,7 @@ def run_game():
 	gf.play_sound(sound)
     #render cycle
 	while True:
-		gf.check_events(ai_settings, screen, game_stats, sb,  play_button, ship, aliens, bullets, sound)
+		gf.check_events(ai_settings, screen, game_stats, sb,  play_button, ship, aliens, bullets, sound, rewards)
 		
 		if game_stats.game_active:
 			ship.update()

@@ -25,7 +25,7 @@ def check_keydown_events(event, ai_settings, screen, ship,bullets, stats, sound)
 		sys.exit()
 
 
-def check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets, mouse_x, mouse_y):
+def check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets, mouse_x, mouse_y, rewards):
 ##	if play_button.rect.collidepoint(mouse_x, mouse_y):
 	button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
 	if button_clicked and not stats.game_active:
@@ -34,6 +34,7 @@ def check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens,
 		pygame.mouse.set_visible(False)
 		
 		stats.reset_stats()
+		rewards.empty()
 		stats.game_active = True
 		#reset game
 		
@@ -56,7 +57,7 @@ def check_keyup_events(event, ship, sound):
 	elif event.key == pygame.K_SPACE:
 		sound.is_shotting = False
 
-def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets, sound):
+def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets, sound, rewards):
 	""" response button press and mouse click """
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
@@ -70,7 +71,7 @@ def check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bull
 			check_keyup_events(event, ship, sound)
 		elif event.type == pygame.MOUSEBUTTONDOWN:
 			mouse_x, mouse_y = pygame.mouse.get_pos()
-			check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets, mouse_x, mouse_y)
+			check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets, mouse_x, mouse_y, rewards)
 		
 def update_screen(ai_settings, screen, stats, sb, ship, aliens,bullets, play_button, rewards):
 	""" update image on screen, and switch to new screen"""

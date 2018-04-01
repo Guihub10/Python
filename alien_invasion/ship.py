@@ -21,7 +21,7 @@ class Ship(Sprite):
 		self.moving_left    = False
 		
 		self.start_time = 0
-		self.substance_time = ai_settings.self.get_value('reward_substance_time', 5) #reward substance time, it ought to be set from file
+		self.substance_time = ai_settings.get_value('reward_substance_time', 5) #reward substance time, it ought to be set from file
 		
 	def blitme(self):
 		self.screen.blit(self.image, self.rect)
