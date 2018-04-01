@@ -8,6 +8,7 @@ from pygame.sprite import Group
 from game_stats import GameStats
 from button import Button
 from scoreboard import Scoreboard
+from sound import Sound
 import game_functions as gf
 
 def run_game():
@@ -24,18 +25,24 @@ def run_game():
 
 	ship = Ship(ai_settings, screen)
 	bullets = Group()
-	##alien = Alien(ai_settings, screen)
 	aliens = Group()
+	rewards = Group()
 	gf.create_fleet(ai_settings, screen, ship, aliens)
-	
+	#sound
+	#pygame.mixer.init()
+	sound = Sound()
+	gf.play_sound(sound)
+    #render cycle
 	while True:
-		gf.check_events(ai_settings, screen, game_stats, play_button, ship, aliens, bullets)
+		gf.check_events(ai_settings, screen, game_stats, sb,  play_button, ship, aliens, bullets, sound)
 		
 		if game_stats.game_active:
 			ship.update()
+			gf.update_rewards(ai_settings, game_stats, rewards, ship, screen, aliens, sb)
 			gf.update_bullets(ai_settings, screen, game_stats, sb, ship, aliens, bullets)
-			gf.update_aliens(ai_settings, game_stats, screen, ship, aliens, bullets)
+			gf.update_aliens(ai_settings, game_stats, screen, sb, ship, aliens, bullets, sound)
 
-		gf.update_screen(ai_settings, screen, game_stats, sb, ship, aliens, bullets, play_button)
+		gf.update_screen(ai_settings, screen, game_stats, sb, ship, aliens, bullets, play_button, rewards)
 
 run_game()
+

@@ -19,7 +19,6 @@ class Bullet(Sprite):
 		
 	def update(self):
 		"""move the bullet towads top"""
-		
 		self.y-= self.speed_factor
 		self.rect.y = self.y
 		
