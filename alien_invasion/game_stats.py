@@ -21,6 +21,7 @@ class GameStats(object):
 	def reset_stats(self):
 		#lives
 		self.ships_left = self.ai_settings.ship_limit
+		self.level = 1
 		self.score = 0
 		self.inc_score = 0
 		self.temp_score = 0
